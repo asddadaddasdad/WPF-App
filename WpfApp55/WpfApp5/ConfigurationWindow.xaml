@@ -1,0 +1,40 @@
+﻿<Window x:Class="WpfApp5.ConfigurationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="Настройки подключения к источнику данных" Height="400" Width="800" Loaded="Window_Loaded" Closing="Window_Closing">
+    <Grid Background="GreenYellow">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+        </Grid>
+        <Border MinWidth="400" Margin="15" Background="Blue" Padding="30" VerticalAlignment="Center" CornerRadius="15">
+            <Border.Effect>
+                <DropShadowEffect BlurRadius="20" Color="#FFA7BBC1" ShadowDepth="5"></DropShadowEffect>
+            </Border.Effect>
+            <StackPanel>
+                <TextBlock Text="Меню подключения к базе даных" FontSize="20" FontWeight="Medium" Margin="0 0 0 200"></TextBlock>
+                <Grid Margin="0 0 0 20">
+                    <Button HorizontalAlignment="Center" Background="Yellow" x:Name="btConnect" IsEnabled="False" Click="btConnect_Click" Content="Подключить источник данных" Height="32" Margin="266,0" VerticalAlignment="Top" />
+                    <Button Background="Yellow" HorizontalAlignment="Left" Name="btGetDataBase" IsEnabled="False" Click="btGetDataBase_Click" Content="Получить список БД" Width="137"></Button>
+                    <Button Background="Yellow" HorizontalAlignment="Right" Name="btCancel" Content="Отмена" Click="btCancel_Click" Margin="0,0,10,0"></Button>
+                    <ComboBox Name="cbServerList" IsEditable="True" IsEnabled="False" Height="53" Margin="234,-152,0,131"  ></ComboBox>
+                    <ComboBox Name="cbDataBaseList" IsEditable="False" IsEnabled="False" Height="57" Margin="234,-89,0,64"></ComboBox>
+                    <Label Background="Yellow" Name="lblServerList" Content="Список серверов" Grid.Row="0"  FontSize="20" Margin="0,-81,483,54"/>
+                    <Label Background="Yellow" Name="lblDataBaseList" Content="Список баз данных" Margin="0,-152,483,121" FontSize="20"></Label>
+                </Grid>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

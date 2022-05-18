@@ -1,0 +1,518 @@
+﻿<Window x:Class="WpfApp5.Admin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp5"
+        mc:Ignorable="d"
+        Title="Окно Администратора" Height="500" Width="1500" Name="AdministratorWin" MinHeight="500" MinWidth="1000" WindowStartupLocation="CenterScreen">
+    <Grid Background ="AliceBlue" x:Name="colorMain">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="0.09*"/>
+            <RowDefinition Height="0.15*"/>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0.4*"/>
+        </Grid.ColumnDefinitions>
+        <Label Name = "lblDriver" Grid.Row="0" Grid.Column="2" Grid.ColumnSpan="2" FontSize="12" VerticalAlignment="Center" Content="Водитель"/>
+        <Label Name = "lblTransport" Grid.Row="0" Grid.Column="6" Grid.ColumnSpan="7" FontSize="12" VerticalContentAlignment="Center" Content="Груз"/>
+        <Label Name = "lblApplication" Grid.Row="0" Grid.Column="4" Grid.ColumnSpan="2" FontSize="12" VerticalContentAlignment="Center" Content="Заявка"/>
+        <Label Name = "lblCarrier" Grid.Row="0" Grid.Column="8" Grid.ColumnSpan="9" FontSize="12" VerticalContentAlignment="Center" Content="Перевозчик"/>
+        <Label Name = "lblCarrie" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12" VerticalContentAlignment="Center" Content="Маршрутный Лист"/>
+        <Label Name = "lblCarri" Grid.Row="3" Grid.Column="2" Grid.ColumnSpan="2" FontSize="12" VerticalContentAlignment="Center" Content="Должность"/>
+        <Label Name = "lblCa" Grid.Row="3" Grid.Column="4" Grid.ColumnSpan="5" FontSize="12" VerticalContentAlignment="Center" Content="Клиент"/>
+
+
+        <!--<Button Name= "btExit" Grid.Row="2" Grid.Column="3" FontSize="12" Content="Закрыть" />-->
+        <Button Name = "btImport2" Grid.Row="2" Grid.Column="2" FontSize="12" Content="Импорт списка" Click="btImport2_Click" ></Button>
+        <!--<Button Name = "btBack" Grid.Row="2" Grid.Column="0" FontSize="12" Content="Авторизация"></Button>
+        <Button Name = "btImport" Grid.Row="2" Grid.Column="1" FontSize="12" Content="Импорт списка" Height="17" VerticalAlignment="Bottom" Click="btImport_Click"></Button>
+        <Button Name = "btImport3" Grid.Row="2" Grid.Column="4" Grid.ColumnSpan="2" FontSize="12" Content="Импорт списка" ></Button>
+        <Button Name = "btImport4" Grid.Row="6" Grid.Column="2" Grid.ColumnSpan="2" FontSize="12" Content="Импорт списка" ></Button>
+        <Button Name = "btImport5" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="2" FontSize="12" Content="Импорт списка" ></Button>
+        <Button Name = "btImport6" Grid.Row="2" Grid.Column="6" FontSize="12" Content="Импорт списка" ></Button>
+        <Button Name = "btImport7" Grid.Row="2" Grid.Column="8" FontSize="12" Content="Импорт списка" ></Button>
+        <Button Name = "btImport8" Grid.Row="5" Grid.Column="4" Grid.ColumnSpan="6" FontSize="12" Content="Импорт списка" ></Button>-->
+        <TabControl Name="tbcProducedCountry" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2">
+            <TabItem Header="Автотранспорт">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="143*"/>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="32"/>
+                        <RowDefinition Height="31*"/>
+                        <RowDefinition Height="32*"/>
+                        <RowDefinition Height="24*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgCargo" FontSize="12" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgCargo_Loaded"></DataGrid>
+                    <Label Name="Model" FontSize="12" Grid.Row="5" Content="Модель:" VerticalContentAlignment="Center"></Label>
+                    <Label Name="Brand" FontSize="12" Grid.Row="6" Content="Марка:" VerticalContentAlignment="Center"></Label>
+                    <TextBox Name="tbLenght2" ToolTip="Поле ввода длина" FontSize="12" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" Text="Длина" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbWidht2" ToolTip="Поле ввода ширина" FontSize="12" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" Text="Ширина" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbHeight2" ToolTip="Поле ввода высота" FontSize="12" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="1" Text="Высота" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbCarrying" ToolTip="Поле ввода грузоподъемность" FontSize="12" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Text="Грузоподъемность" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbCapacity" ToolTip="Поле ввода вместимость" FontSize="12" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Вместимость" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbNumber" ToolTip="Поле ввода номер" FontSize="12" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" Text="Номер" VerticalContentAlignment="Center"></TextBox>
+                    <ComboBox Name="cbModel" ToolTip="Выподающий список для модели" FontSize="12" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Loaded="Model_Loaded"/>
+
+                    <Button Name="btProductInsert" ToolTip="Кнопка новая запись" FontSize="12" Grid.Row="7" Grid.Column="0" Content="Новая запись" Click="btProductInsert_Click" />
+                    <Button Name="btProductUpdate" ToolTip="Кнопка изменить данные" FontSize="12" Grid.Row="7" Grid.Column="1" Content="Изменить данные" Click="btProductUpdate_Click" Height="24" VerticalAlignment="Bottom"></Button>
+                    <Button Name="btProductDelete" ToolTip="Кнопка удалить запись" FontSize="12" Grid.Row="7" Grid.Column="2" Content="Удалить запись" Click="btProductDelete_Click" ></Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Типы Моделей">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
+                        <ColumnDefinition Width="124*"/>
+                        <ColumnDefinition Width="163*"></ColumnDefinition>
+                        <ColumnDefinition Width="163*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.7*"></RowDefinition>
+                        <RowDefinition Height="0.7*"></RowDefinition>
+                        <RowDefinition Height="0.14*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name ="dgModel" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" Loaded="Model2_Loaded" CanUserAddRows="False"/>
+                    <TextBox Name="tbModelName" ToolTip="поле ввода название модели" FontSize="12" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Text="Название модели" VerticalContentAlignment="Center"/>
+                    <ComboBox Name="cbBrandName1" ToolTip="Выпадающий список для марки" FontSize="12" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" Text="Название Бренда" Loaded="Brand1Loaded" VerticalContentAlignment="Center"/>
+                    <Button Name="btModelInsert" ToolTip="Кнопка новая запись" Content="Новая запись" FontSize="12" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Click="btModelInsert_Click" Height="20" VerticalAlignment="Bottom"></Button>
+                    <Button Name="btModelUpdate" ToolTip="Кнопка изменить данные" Content="Изменить данные" FontSize="12" Grid.Row="3" Grid.Column="2" ></Button>
+                    <Button Name="btModelDelete" ToolTip="Кнопка удалить запись" Content="Удалить запись" FontSize="12" Grid.Row="3" Grid.Column="3" ></Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Марка">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="40*"></ColumnDefinition>
+                        <ColumnDefinition Width="124*"/>
+                        <ColumnDefinition Width="163*"></ColumnDefinition>
+                        <ColumnDefinition Width="163*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgMark" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4" CanUserAddRows="False" Loaded="Mark_Loaded" Grid.RowSpan="4" RenderTransformOrigin="0.498,0.952"/>
+                    <TextBox Name="tbBrandName" ToolTip="Поле ввода назвние марки" FontSize="12" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Text="Название марки:" VerticalContentAlignment="Center"/>
+                    <Button Name="btBrandInsert" ToolTip="Кнопка новая запись" Content="Новая запись" FontSize="12" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Click="btBrandInsert_Click"></Button>
+                    <Button Name="btBrandUpdate" ToolTip="Кнопка изменить данные" Content="Изменить данные" FontSize="12" Grid.Row="2" Grid.Column="2" Click="btBrandUpdate_Click"></Button>
+                    <Button Name="btBrandDelete" ToolTip="Кнопка удалить запись" Content="Удалить запись" FontSize="12" Grid.Row="2" Grid.Column="3" Click="btBrandDelete_Click"></Button>
+                </Grid>
+            </TabItem>
+
+
+        </TabControl>
+        <Grid Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="2.4*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dgEmployee" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" CanUserAddRows="False" SelectionChanged="dgEmployee_SelectionChanged" Loaded="dgEmployee_Loaded" Grid.RowSpan="4" RenderTransformOrigin="0.498,0.952" Margin="0,26,0,10"/>
+
+
+
+            <Label Name="lblPassword" Grid.Row="7" Grid.Column="0" FontSize="12" Content="Пароль:" VerticalContentAlignment="Center"></Label>
+
+
+            <TextBox Name="tbFirstName" ToolTip="Поле ввода фамилия" Grid.Row="3" Grid.Column="0" FontSize="12" Grid.ColumnSpan="3" Text="Фамилия" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbSecondName" ToolTip="Поле ввода имя" Grid.Row="4" Grid.Column="0" FontSize="12" Text="Имя" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbMiddleName" ToolTip="Поле ввода отчество" Grid.Row="5" Grid.Column="0" FontSize="12" Text="Отчество" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbLogin" ToolTip="Поле ввода логин" Grid.Row="6" Grid.Column="0" FontSize="12" Text="Логин" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+
+            <TextBox Name="tbSNILS" ToolTip="Поле ввода СНИЛС" Grid.Row="8" Grid.Column="0" FontSize="12" Text="СНИЛС" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbFOMS" ToolTip="Поле ввода ФОМС" Grid.Row="9" Grid.Column="0" FontSize="12" Text="ФОМС" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <ComboBox Name="cbNameOrganization" ToolTip="Выподающий списко название организации" Loaded="NameOrganizationLoaded" Grid.Row="10" Grid.Column="0" Text ="Название Организации" FontSize="12" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></ComboBox>
+            <PasswordBox Name="pbPassword" ToolTip="Поле ввода пароль" Grid.Row="7" Grid.Column="1" FontSize="12" VerticalContentAlignment="Center"></PasswordBox>
+            <PasswordBox Name="pbPasswordConf" ToolTip="Поле ввода пароль" Grid.Row="7" Grid.Column="2" FontSize="12" VerticalContentAlignment="Center"></PasswordBox>
+            <Button Name="btEmployeeInsert" ToolTip="Кнопка добавить запись" Grid.Row="11" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert_Click" Height="15" VerticalAlignment="Top"></Button>
+            <Button Name="btEmployeeUpdate" ToolTip="Кнопка изменить данные" Grid.Row="12" Grid.Column="1" FontSize="12" Content="Изменить данные" ></Button>
+            <Button Name="btEmployeeDelete" ToolTip="Кнопка удалить запись" Grid.Row="12" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="4" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+                <RowDefinition Height="0.15*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dgApplication" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgApplication_Loaded" Margin="0,28,0,5"/>
+
+            <TextBox Name="tbApplicationNumber" ToolTip="Выподающий список номер заявки" Grid.Row="1" Grid.Column="0" FontSize="12" Text="Номер Заявки" Grid.ColumnSpan="3" VerticalContentAlignment="Center" />
+            <ComboBox Name="cbData" Grid.Row="2" ToolTip="Выподающий список дата" Grid.Column="0" FontSize="12" Text="Дата" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="DataLoaded"></ComboBox>
+            <ComboBox Name="cbTime" Grid.Row="3" ToolTip="Выподающий списко время" Grid.Column="0" FontSize="12" Text="Время" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="TimeLoaded"></ComboBox>
+            <TextBox Name="tbStatus" Grid.Row="4" ToolTip="Поле ввода статус" Grid.Column="0" FontSize="12" Text="Статус" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbFirstName2" ToolTip="Поле ввода фамилия" Grid.Row="5" Grid.Column="0" FontSize="12" Text="Фамилия" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbSecondName2" ToolTip="Поле ввода имя" Grid.Row="6" Grid.Column="0" FontSize="12" Text="Имя" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbMiddleName2" ToolTip="Поле ввода отчество" Grid.Row="7" Grid.Column="0" FontSize="12" Text="Отчество" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <ComboBox Name="cbNumberList" Grid.Row="8" ToolTip="Выподающий список номер листа" Grid.Column="0" FontSize="12" Text="Номер маршрутного листа" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="NumberListLoaded"></ComboBox>
+            <Button Name="btEmployeeInsert2" ToolTip="Кнопка новая запись" Grid.Row="9" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert2_Click"></Button>
+            <Button Name="btEmployeeUpdate2" ToolTip="Кнопка изменить запись" Grid.Row="9" Grid.Column="1" FontSize="12" Content="Изменить данные"></Button>
+            <Button Name="btEmployeeDelete2" ToolTip="Кнопка удалить запись" Grid.Row="9" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="6" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.125*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dgTransport" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgTransport_Loaded" Margin="0,27,0,0"/>
+
+
+
+            <TextBox Name="tbWDescribtion" ToolTip="Поле ввода описания" Grid.Row="1" Grid.Column="0" FontSize="12" Text="Описание" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbWeidth" ToolTip="Поле ввода веса" Grid.Row="2" Grid.Column="0" FontSize="12" Text="Вес" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbLenght" ToolTip="Поле ввода длины" Grid.Row="3" Grid.Column="0" FontSize="12" Text="Длина" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbHeight" ToolTip="Поле ввода высоты" Grid.Row="4" Grid.Column="0" FontSize="12" Text="Высота" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbWidth" ToolTip="Поле ввода ширины" Grid.Row="5" Grid.Column="0" FontSize="12" Text="Ширина" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <Button Name="btEmployeeInsert5" ToolTip="Кнопка новая запись" Grid.Row="6" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert5_Click" />
+            <Button Name="btEmployeeUpdate5" ToolTip="Кнопка изменить данные" Grid.Row="6" Grid.Column="1" FontSize="12" Content="Изменить данные" Click="btEmployeeUpdate5_Click" Height="15" VerticalAlignment="Bottom" />
+            <Button Name="btEmployeeDelete5" ToolTip="Кнопка удалить запись" Grid.Row="6" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+        </Grid>
+        <Grid Grid.Row="1" Grid.Column="8" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.32*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.055*"/>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dgCarrier" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgCarrier_Loaded" Margin="0,28,0,0"/>
+            <TextBox Name="tbName1Organization" ToolTip="Поле ввода название организации" Grid.Row="1" Grid.Column="0" FontSize="12" Text="Название" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbTypeOrganization" ToolTip="Поле ввода тип организации" Grid.Row="2" Grid.Column="0" FontSize="12" Text="Тип" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <Button Name="btEmployeeInsert6" ToolTip="Кнопка удалить запись" Grid.Row="3" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert6_Click" Height="27" VerticalAlignment="Bottom" />
+            <Button Name="btEmployeeUpdate6" ToolTip="Кнопка изменить данные" Grid.Row="3" Grid.Column="1" FontSize="12" Content="Изменить данные" Click="btEmployeeUpdate6_Click" Height="17" VerticalAlignment="Bottom" ></Button>
+            <Button Name="btEmployeeDelete6" ToolTip="Кнопка удалить запись" Grid.Row="6" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+        </Grid>
+
+        <Grid Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2" Loaded="dgRoute_Sheet_Loaded">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="1.64*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+                <RowDefinition Height="0.6*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <DataGrid Name="dgRoute_Sheet" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgCarrier_Loaded" Grid.RowSpan="3" Margin="0,24,0,0"/>
+
+
+            <Button Name="btEmployeeInsert8" ToolTip="Кнопка новая запись" Grid.Row="8" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert8_Click" />
+            <Button Name="btEmployeeUpdate8" ToolTip="Кнопка изменить данные" Grid.Row="8" Grid.Column="1" FontSize="12" Content="Изменить данные" ></Button>
+            <Button Name="btEmployeeDelete8" ToolTip="Кнопка удалить запись" Grid.Row="8" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+            <TextBox Name="tbNumber1" ToolTip="Поле ввода номера" FontSize="12" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="3" Text="Номер" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbData1" Text="Дата" ToolTip="Поле ввода даты" FontSize="12" Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <TextBox Name="tbTime1" Text="Время" ToolTip="Поле ввода время" FontSize="12" Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="3" VerticalContentAlignment="Center"></TextBox>
+            <ComboBox Name="сbCarrier1" ToolTip="Выпадающий список перевозчик" Text="Перевозчик" FontSize="12" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="Carrier2Loaded"></ComboBox>
+            <ComboBox Name="сbNone1" ToolTip="Выпадающий список марки и модели" Text="Марка и модель" FontSize="12" Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="NoneLoaded"></ComboBox>
+        </Grid>
+        <TabControl Name="tbcCustomer" Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="7">
+            <TabItem Header="Клиент">
+                <Grid Grid.Row="4" Grid.Column="4" Grid.ColumnSpan="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.4*"/>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="0.6*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgCustomer" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgCustomer_Loaded"/>
+
+                    <Button Name="btEmployeeInsert9" ToolTip="Кнопка новая запись" Grid.Row="11" Grid.Column="0" FontSize="10" Content="Новая запись" />
+                    <Button Name="btEmployeeUpdate9" ToolTip="Кнопка изменить данные" Grid.Row="11" Grid.Column="1" FontSize="10" Content="Изменить данные" ></Button>
+                    <Button Name="btEmployeeDelete9" ToolTip="Кнопка удалить запись" Grid.Row="11" Grid.Column="2" FontSize="10" Content="Удалить запись" ></Button>
+                    <TextBox Name="tbFirstName4" ToolTip="Поле ввода фамилии" FontSize="10" Grid.Row="1" Grid.Column="0" Text ="Фамилия" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbSecondeName5" ToolTip="Поле ввода имени" FontSize="10" Grid.Row="1"  Text ="Имя" Grid.Column="1" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbLastName6" ToolTip="Поле ввода отчества" FontSize="10" Grid.Row="1" Grid.Column="2" Text ="Отчество"  Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbPassWord1" ToolTip="Поле ввода пароля" FontSize="10" Grid.Row="2" Grid.Column="0"  Text ="Пароль" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbLogin1" ToolTip="Поле ввода логина" FontSize="10" Grid.Row="2" Grid.Column="1"  Text ="Логин" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbIIN" ToolTip="Поле ввода ИИН" FontSize="10" Grid.Row="2" Grid.Column="2"  Text ="ИИН" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbBIK" ToolTip="Поле ввода БИК" FontSize="10" Grid.Row="3" Grid.Column="0"  Text ="БИК" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox Name="tbOKPO" ToolTip="Поле ввода ОКПО" FontSize="10" Grid.Row="3" Grid.Column="1"  Text ="ОКПО" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <Label Name="lblOrganizationType" Grid.Row="4" Grid.Column="0" FontSize="12" Content="Тип Организации:" VerticalContentAlignment="Center"></Label>
+                    <ComboBox FontSize="10" Grid.Row="4" ToolTip="Выпадающий список типы организации" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center"></ComboBox>
+                    <TextBox Name="tbNameOrganization1" FontSize="10" Grid.Row="3"  Text ="Название Организации" Grid.Column="2" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Тип Организации">
+                <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1.5*"/>
+                        <RowDefinition Height="0.3*"/>
+                        <RowDefinition Height="0.3*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgTypeOrganization" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgType_Organization_Loaded" />
+
+                    <Button Name="btEmployeeInsert12" ToolTip="Кнопка новая запись" Grid.Row="6" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert12_Click" />
+                    <Button Name="btEmployeeUpdate12" ToolTip="Кнопка изменить данные" Grid.Row="6" Grid.Column="1" FontSize="12" Content="Изменить данные" ></Button>
+                    <Button Name="btEmployeeDelete12" Grid.Row="6" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+                    <TextBox Name="tbTypeOrganization1" ToolTip="Поле ввода типа организации" FontSize="12" Grid.Row="1" Grid.Column="0" Text="Тип Организации" Grid.ColumnSpan="3" VerticalContentAlignment="Center"/>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Интерфейс">
+                <Grid x:Name="colorPersonal">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="19*"/>
+                        <ColumnDefinition Width="1044*"/>
+                    </Grid.ColumnDefinitions>
+                    <Slider Orientation="Vertical" Minimum="0" Maximum="255" x:Name="BackR" HorizontalAlignment="Left" Margin="4,10,0,0" VerticalAlignment="Top" Height="220" Width="25" Grid.ColumnSpan="2" Grid.Column="1"/>
+                    <Button Content="Проверить цвет" HorizontalAlignment="Left" Margin="62,10,0,0" VerticalAlignment="Top" Width="140" Height="36" Click="Button_Click_22" Grid.Column="2"/>
+                    <Slider Orientation="Vertical"  Minimum="0" Maximum="255" x:Name="BackG" HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Height="217" Width="26" Grid.Column="2"/>
+                    <Slider Orientation="Vertical"  Minimum="0" Maximum="255" x:Name="BackB" HorizontalAlignment="Left" Margin="36,13,0,0" VerticalAlignment="Top" Height="217" Width="26" Grid.Column="2"/>
+                    <Rectangle x:Name="recc" Fill="#FFF4F4F5" HorizontalAlignment="Left" Height="63" Margin="62,51,0,0" Stroke="Black" VerticalAlignment="Top" Width="140" Grid.Column="2"/>
+                    <Label Content="Данный цвет будет&#xD;&#xA;применён к выбранному&#xD;&#xA;пункту" HorizontalAlignment="Left" Margin="62,119,0,0" VerticalAlignment="Top" Height="63" Width="140" Grid.Column="2"/>
+                    <Button  Content="перевозчика" HorizontalAlignment="Left" Margin="284,86,0,0" VerticalAlignment="Top" Width="79" Height="28" Click="Button_Click" Grid.Column="2" RenderTransformOrigin="0.606,0.512"/>
+                    <Button  Content="клиент" HorizontalAlignment="Left" Margin="368,86,0,0" VerticalAlignment="Top" Width="81" Height="28" Click="Button_Click_4" Grid.Column="2"/>
+                    <Button Content="&quot;Цвета Окна&quot;" HorizontalAlignment="Left" Margin="207,10,0,0" VerticalAlignment="Top" Width="72" Height="36" Click="Button_Click_23" RenderTransformOrigin="-0.022,0.575" Grid.Column="2"/>
+
+                    <Button Content="&quot;Окна автотранспорт&quot;" HorizontalAlignment="Left" Margin="209,50,0,0" VerticalAlignment="Top" Width="68" Height="36" Click="Button_Click_24" RenderTransformOrigin="-0.022,0.575" Grid.Column="2">
+                        <Button.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform AngleX="2.045"/>
+                                <RotateTransform/>
+                                <TranslateTransform X="0.769"/>
+                            </TransformGroup>
+                        </Button.RenderTransform>
+                    </Button>
+
+                    <Button Content="&quot;Модели&quot;" HorizontalAlignment="Left" Margin="207,86,0,0" VerticalAlignment="Top" Width="72" Height="28" Click="Button_Click_25" RenderTransformOrigin="0.166,0.5" Grid.Column="2"/>
+
+                    <Button Content="&quot;Марки&quot;" HorizontalAlignment="Left" Margin="207,119,0,0" VerticalAlignment="Top" Width="72" Height="31" Click="Button_Click_26" RenderTransformOrigin="0.18,0.575" Grid.Column="2"/>
+
+                    <Button Content="&quot;Маршрутного листа&quot;" HorizontalAlignment="Left" Margin="284,119,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="Button_Click_27" RenderTransformOrigin="0.317,0.425" Grid.Column="2"/>
+                    <Button Content="&quot;типа организации&quot;" HorizontalAlignment="Left" Margin="368,119,0,0" VerticalAlignment="Top" Width="81" Height="31" RenderTransformOrigin="0.5,0.5" Grid.Column="2" Click="Button_Click_5"/>
+
+                    <!--<Button Content="&quot;Водителя&quot;" HorizontalAlignment="Left" Margin="207,158,0,70" Width="72" Click="Button_Click_28" RenderTransformOrigin="0.043,0.238" Grid.Column="2"/>
+                    <Button Content="&quot;Должности&quot;" HorizontalAlignment="Left" Margin="284,158,0,70" Width="84" RenderTransformOrigin="0.043,0.238" Click="Button_Click_1" Grid.Column="2"/>
+                    <Button Content="&quot;Для пункта досавтки&quot;" HorizontalAlignment="Left" Margin="368,153,0,71" Width="81" RenderTransformOrigin="0.043,0.238" Grid.Column="2" Click="Button_Click_6"/>-->
+
+                    <Button Content="Заявки" HorizontalAlignment="Left" Margin="284,10,0,0" VerticalAlignment="Top" Width="79" Height="36" Click="Button_Click_33" RenderTransformOrigin="-0.493,-1.225" Grid.Column="2"/>
+                    <Button Content="груза" HorizontalAlignment="Left" Margin="284,51,0,0" VerticalAlignment="Top" Width="79" Height="31" Click="Button_Click_34" RenderTransformOrigin="0.236,0.5" Grid.Column="2"/>
+                    <Button Content="Customer" HorizontalAlignment="Left" Margin="368,10,0,0" VerticalAlignment="Top" Width="81" Height="36" RenderTransformOrigin="0.236,0.5" Click="Button_Click_2" Grid.Column="2"/>
+                    <Button Content="Post_Employee" HorizontalAlignment="Left" Margin="368,51,0,0" VerticalAlignment="Top" Width="81" Height="30" RenderTransformOrigin="0.5,0.5" Click="Button_Click_3" Grid.Column="2"/>
+
+
+
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <TabControl Name="tbcPost" Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+            <TabItem Header="Post">
+                <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.32*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgPost" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgPost_Loaded" SelectionChanged="dgCountry_SelectionChanged"/>
+
+                    <TextBox Name="tbPost" ToolTip="Поле ввода должности" Grid.Row="1" Grid.Column="1" FontSize="12" Text="" Grid.ColumnSpan="2" VerticalContentAlignment="Center"></TextBox>
+                    <Button Name="btEmployeeInsert7" ToolTip="Кнопка новая запись" Grid.Row="6" Grid.Column="0" FontSize="12" Content="Экспорт" Click="btEmployeeInsert7_Click"/>
+                    <Button Name="btEmployeeUpdate7" ToolTip="Кнопка изменить данные" Grid.Row="6" Grid.Column="1" FontSize="12" Content="Импорт" Click="btEmployeeUpdate7_Click" ></Button>
+                    <Button Name="btEmployeeDelete7" ToolTip="Кнопка удалить запись" Grid.Row="6" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Post_Customer">
+                <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.4*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.09*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgPost_Customer" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgPost_Customer_Loaded"/>
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="12" Content="Должность:" VerticalContentAlignment="Center"></Label>
+                    <ComboBox Name="cbPost_Customer" ToolTip="Выпадающий список должность" FontSize="12" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Loaded="Post_CustomerLoaded"></ComboBox>
+                    <ComboBox Name="cbSurname" ToolTip="Выпадающий списко фамилия" FontSize="12" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="1" VerticalContentAlignment="Center" Loaded="SurnameLoaded"></ComboBox>
+                    <ComboBox Name="cbName" FontSize="12" ToolTip="Выпадающий списко имя" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="1" VerticalContentAlignment="Center" Loaded="NameLoaded"></ComboBox>
+                    <ComboBox Name="cbLastname" FontSize="12" ToolTip="Выпадающий список фамилия" Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="2" VerticalContentAlignment="Center" Loaded="LastNameLoaded"></ComboBox>
+                    <Button Name="btEmployeeInsert10" ToolTip="Кнопка новая запись" Grid.Row="3" Grid.Column="0" FontSize="12" Content="Новая запись" Click="btEmployeeInsert10_Click" />
+                    <Button Name="btEmployeeUpdate10" ToolTip="Кнопка изменить данные" Grid.Row="3" Grid.Column="1" FontSize="12" Content="Изменить данные" ></Button>
+                    <Button Name="btEmployeeDelete10" ToolTip="Кнопка удалить запись" Grid.Row="3" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Post_Employee">
+                <Grid Grid.Row="4" Grid.Column="2" Grid.ColumnSpan="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="0.58*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.2*"/>
+                        <RowDefinition Height="0.12*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgPost_Employee" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgPost_Employee_Loaded"/>
+                    <Label Grid.Row="1" Grid.Column="0" FontSize="12" Content="ФИО:" VerticalContentAlignment="Center"></Label>
+                    <Label Grid.Row="2" Grid.Column="0" FontSize="12" Content="Логин:" VerticalContentAlignment="Center"></Label>
+                    <Label Grid.Row="3" Grid.Column="0" FontSize="12" Content="Должность:" VerticalContentAlignment="Center"></Label>
+                    <ComboBox FontSize="12" ToolTip="Выпадающий список должность" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center"></ComboBox>
+                    <TextBox FontSize="12" ToolTip="Поле ввода ФИО" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center"></TextBox>
+                    <TextBox FontSize="12" ToolTip="Поле ввода логина" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalContentAlignment="Center"></TextBox>
+                    <Button Name="btEmployeeInsert11" ToolTip="Кнопка новая запись" Grid.Row="4" Grid.Column="0" FontSize="12" Content="Новая запись"/>
+                    <Button Name="btEmployeeUpdate11" ToolTip="Кнопка изменить данные" Grid.Row="4" Grid.Column="1" FontSize="12" Content="Изменить данные" ></Button>
+                    <Button Name="btEmployeeDelete11" ToolTip="Кнопка удалить данные" Grid.Row="4" Grid.Column="2" FontSize="12" Content="Удалить запись" ></Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+        <TabControl Name="tbcDelivery_Point" Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="7">
+            <TabItem Header="Пункт Доставки">
+                <Grid Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="8" Loaded="dgRoute_Sheet_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                        <RowDefinition Height="0.12*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgDelivery_Points" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgDelivery_Points_Loaded" RenderTransformOrigin="0.517,0.822"/>
+                    <TextBox Name="tbdelivery_Points" ToolTip="Поле ввода адреса токи доставки" FontSize="10" Grid.Row="1" Grid.Column="0"  Text ="Адрес Точки Доставки" Grid.ColumnSpan="1" VerticalContentAlignment="Center"></TextBox>
+                    <Button Name="btEmployeeInsert13" ToolTip="Кнопка новая запись" Grid.Row="11" Grid.Column="0" FontSize="10" Content="Новая запись" Click="btEmployeeInsert13_Click"/>
+                    <Button Name="btEmployeeUpdate13" ToolTip="Кнопка изменить данные" Grid.Row="11" Grid.Column="1" FontSize="10" Content="Изменить данные"></Button>
+                    <Button Name="btEmployeeDelete13" ToolTip="Кнопка удалить запись" Grid.Row="11" Grid.Column="2" FontSize="10" Content="Удалить запись" ></Button>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Адрес и Маршрутный лист">
+                <Grid Grid.Row="4" Grid.Column="7" Grid.ColumnSpan="8" Loaded="dgRoute_Sheet_Loaded">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                        <RowDefinition Height="0.3*"></RowDefinition>
+                        <RowDefinition Height="0.12*"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <DataGrid Name="dgPoints_Route_Sheet" Grid.Row="0" Grid.ColumnSpan="3" CanUserAddRows="False" Loaded="dgPoints_Route_Sheet_Loaded" RenderTransformOrigin="0.517,0.822"/>
+                    <ComboBox Name="cbdelivery_Points1" ToolTip="Поле ввода адреса точки доставки" FontSize="10" Grid.Row="1" Grid.Column="0"  Text ="Адрес Точки Доставки" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="Delivery3_PointsLoaded"></ComboBox>
+                    <ComboBox Name="cbPoints_Route_Sheet" ToolTip="Поле ввода точек маршрутного листа" FontSize="10" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" VerticalContentAlignment="Center" Loaded="Delivery2_PointsLoaded"></ComboBox>
+                    <Button Name="btEmployeeInsert14" ToolTip="Кнопка новая запись" Grid.Row="11" Grid.Column="0" FontSize="10" Content="Новая запись" Click="btEmployeeInsert14_Click" />
+                    <Button Name="btEmployeeUpdate14" ToolTip="Кнопка изменить данные" Grid.Row="3" Grid.Column="1" FontSize="10" Content="Изменить данные" Click="btEmployeeUpdate14_Click" Height="10" VerticalAlignment="Top" ></Button>
+                    <Button Name="btEmployeeDelete14" ToolTip="Кнопка удалить запись" Grid.Row="11" Grid.Column="2" FontSize="10" Content="Удалить запись" ></Button>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
+
